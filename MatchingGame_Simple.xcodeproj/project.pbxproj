@@ -14,6 +14,7 @@
 		457089A42598CF8D00963AB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 457089A32598CF8D00963AB6 /* Assets.xcassets */; };
 		457089A72598CF8E00963AB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 457089A52598CF8E00963AB6 /* LaunchScreen.storyboard */; };
 		457089AF259A31BA00963AB6 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457089AE259A31BA00963AB6 /* Card.swift */; };
+		457089B1259A38F800963AB6 /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457089B0259A38F800963AB6 /* CardModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		457089A62598CF8E00963AB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		457089A82598CF8E00963AB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		457089AE259A31BA00963AB6 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		457089B0259A38F800963AB6 /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				4570899A2598CF8B00963AB6 /* AppDelegate.swift */,
 				4570899C2598CF8B00963AB6 /* SceneDelegate.swift */,
 				4570899E2598CF8B00963AB6 /* ViewController.swift */,
+				457089B0259A38F800963AB6 /* CardModel.swift */,
 				457089AE259A31BA00963AB6 /* Card.swift */,
 				457089A02598CF8B00963AB6 /* Main.storyboard */,
 				457089A32598CF8D00963AB6 /* Assets.xcassets */,
@@ -145,6 +148,7 @@
 				4570899B2598CF8B00963AB6 /* AppDelegate.swift in Sources */,
 				4570899D2598CF8B00963AB6 /* SceneDelegate.swift in Sources */,
 				457089AF259A31BA00963AB6 /* Card.swift in Sources */,
+				457089B1259A38F800963AB6 /* CardModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
