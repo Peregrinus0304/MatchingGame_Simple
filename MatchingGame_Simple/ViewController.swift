@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     var model = CardModel()
     var timer:Timer?
     var milliseconds:Float = 60 * 1000
+    var firstFlippedCardIndex:IndexPath?
     
     //MARK: - Lifecycle
     
@@ -40,6 +41,41 @@ class ViewController: UIViewController {
             timer?.invalidate()
             timerLabel.textColor = UIColor.red
             #warning("check if game ended")
+        }
+    }
+    
+    func checkForMathces (_ secondFlippedCardIndex:IndexPath)
+    {
+        
+        let cardOneCell = collectionView.cellForItem(at: firstFlippedCardIndex!) as? CardCollectionViewCell
+        
+        let cardTwoCell = collectionView.cellForItem(at: secondFlippedCardIndex) as? CardCollectionViewCell
+        let cardOne = cardArray [firstFlippedCardIndex!.row]
+        let cardTwo = cardArray[secondFlippedCardIndex.row]
+        
+        if cardOne.imageName == cardTwo.imageName {
+            
+            #warning("match sound")
+            
+            cardOne.isMatched = true
+            cardTwo.isMatched = true
+            
+            cardOneCell?.remove()
+            cardTwoCell?.remove()
+            
+            #warning("check if the game ended")
+            
+        }
+        else {
+            
+            // nomatch sound
+            #warning("no match sound")
+            
+            cardOne.isFlipped = false
+            cardTwo.isFlipped = false
+            
+            cardOneCell?.flipBack()
+            cardTwoCell?.flipBack()
         }
     }
     
@@ -79,8 +115,14 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
             
             card.isFlipped = true
             
-            #warning("check for matches")
-            
+            if firstFlippedCardIndex == nil {
+                firstFlippedCardIndex = indexPath
+                
+            }
+            else {
+                
+                checkForMathces(indexPath)
+            }
         }
     }
     
