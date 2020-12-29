@@ -41,18 +41,26 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="4oy-YB-eHg" customClass="CardCollectionViewCell" customModule="MatchingGame_Simple" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cardCell" id="4oy-YB-eHg" customClass="CardCollectionViewCell" customModule="MatchingGame_Simple" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Z5F-nP-Com" customClass="CardCollectionViewCell" customModule="MatchingGame_Simple" customModuleProvider="target">
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Z5F-nP-Com">
                                                     <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NbD-BO-8TI">
                                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="128" id="qTz-Jv-2Q6"/>
+                                                                <constraint firstAttribute="height" constant="128" id="vA2-4C-B5Q"/>
+                                                            </constraints>
                                                         </imageView>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="13i-fR-fkC">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back" translatesAutoresizingMaskIntoConstraints="NO" id="13i-fR-fkC">
                                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="128" id="OqY-2R-9VI"/>
+                                                                <constraint firstAttribute="height" constant="128" id="u3f-GO-wrF"/>
+                                                            </constraints>
                                                         </imageView>
                                                     </subviews>
                                                     <constraints>
@@ -66,6 +74,7 @@
                                                         <constraint firstAttribute="trailing" secondItem="NbD-BO-8TI" secondAttribute="trailing" id="zoK-yl-Ksc"/>
                                                     </constraints>
                                                 </collectionViewCellContentView>
+                                                <size key="customSize" width="128" height="128"/>
                                                 <connections>
                                                     <outlet property="backImageView" destination="13i-fR-fkC" id="CLd-Gm-pLo"/>
                                                     <outlet property="frontImageView" destination="NbD-BO-8TI" id="Wib-Gq-mwh"/>
@@ -103,4 +112,7 @@
             <point key="canvasLocation" x="138.61607142857142" y="128.98550724637681"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="back" width="540" height="960"/>
+    </resources>
 </document>

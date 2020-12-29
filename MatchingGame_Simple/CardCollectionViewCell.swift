@@ -14,7 +14,7 @@ class CardCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var frontImageView: UIImageView!
     @IBOutlet weak var backImageView: UIImageView!
     
-      var card:Card?
+    var card:Card?
     
     func setCard(_ card:Card) {
         
@@ -24,7 +24,7 @@ class CardCollectionViewCell: UICollectionViewCell {
             backImageView.alpha = 0
             frontImageView.alpha = 0
             
-             return
+            return
         }
         else {
             backImageView.alpha = 1
@@ -33,7 +33,7 @@ class CardCollectionViewCell: UICollectionViewCell {
         
         frontImageView.image = UIImage(named: card.imageName)
         if card.isFlipped == true {
-         
+            
             UIView.transition(from: backImageView, to: frontImageView, duration: 0, options: [.transitionFlipFromLeft, .showHideTransitionViews], completion: nil)
         }
         else {
@@ -55,7 +55,7 @@ class CardCollectionViewCell: UICollectionViewCell {
     
     func remove() {
         backImageView.alpha = 0
-
+        
         UIView.animate(withDuration: 0.3, delay: 0.5, options: .curveEaseOut, animations: {
             self.frontImageView.alpha = 0
         }, completion: nil)
