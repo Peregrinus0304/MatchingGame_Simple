@@ -52,6 +52,7 @@ class CardCollectionViewCell: UICollectionViewCell {
         }
         
     }
+    
     func remove() {
         backImageView.alpha = 0
 
