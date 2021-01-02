@@ -10,18 +10,19 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    //MARK: - Outlets
+    //MARK: - IBOutlets
     
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
     //MARK: - Properties
     
-    var model = CardModel()
-    var cardArray = [Card]()
-    var timer:Timer?
-    var milliseconds:Float = 60 * 1000
-    var firstFlippedCardIndex:IndexPath?
+    private var model = CardModel()
+    private var cardArray = [Card]()
+    private var timer:Timer?
+    private var milliseconds:Float = 60 * 1000
+    private var firstFlippedCardIndex:IndexPath?
+    let sectionInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     
     //MARK: - Lifecycle
     
@@ -35,6 +36,12 @@ class ViewController: UIViewController {
         RunLoop.main.add(timer!, forMode:  .common)
     }
     
+}
+
+//MARK: Fileprivate extension
+
+fileprivate extension ViewController {
+    
     @objc func TimerElapsed() {
         milliseconds -= 1
         let seconds = String(format: "%.2f", milliseconds/1000)
@@ -46,8 +53,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func checkForMathces (_ secondFlippedCardIndex:IndexPath)
-    {
+    func checkForMathces (_ secondFlippedCardIndex:IndexPath) {
         
         let cardOneCell = collectionView.cellForItem(at: firstFlippedCardIndex!) as? CardCollectionViewCell
         
@@ -66,7 +72,6 @@ class ViewController: UIViewController {
             CheckGameEnded()
         }
         else {
-            
             #warning("nomatch sound")
             
             cardOne.isFlipped = false
@@ -83,8 +88,9 @@ class ViewController: UIViewController {
     }
     
     func CheckGameEnded() {
-        
         var isWon = true
+        var title = ""
+        var massage = ""
         
         for card in cardArray {
             if card.isMatched == false {
@@ -92,9 +98,6 @@ class ViewController: UIViewController {
                 break
             }
         }
-        
-        var title = ""
-        var massage = ""
         
         if isWon == true {
             if milliseconds > 0 {
@@ -133,7 +136,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cardCell", for: indexPath) as! CardCollectionViewCell
-        
+        cell.layer.cornerRadius = 30
         let card = cardArray[indexPath.row]
         cell.setCard(card)
         
@@ -161,10 +164,38 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
                 
             }
             else {
-                
                 checkForMathces(indexPath)
             }
         }
+    }
+    
+}
+
+extension ViewController: UICollectionViewDelegateFlowLayout  {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let itemPerRow:CGFloat = 3
+        let minimumSpace: CGFloat = 10
+        let itemSize: CGSize
+        let paddingSpace = sectionInsets.left + sectionInsets.right + minimumSpace * (itemPerRow - 1 )
+        let width = collectionView.bounds.width - paddingSpace
+        let widthPerItem = width / itemPerRow
+        itemSize = CGSize(width: widthPerItem, height: widthPerItem)
+        
+        return itemSize
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return  sectionInsets
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 10 
     }
     
 }

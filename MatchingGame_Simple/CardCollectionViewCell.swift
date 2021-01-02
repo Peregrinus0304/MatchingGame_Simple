@@ -10,6 +10,7 @@ import UIKit
 
 class CardCollectionViewCell: UICollectionViewCell {
     
+    //MARK: - IBOutlets
     
     @IBOutlet weak var frontImageView: UIImageView!
     @IBOutlet weak var backImageView: UIImageView!
@@ -38,7 +39,6 @@ class CardCollectionViewCell: UICollectionViewCell {
         }
         else {
             UIView.transition(from: frontImageView, to: backImageView, duration: 0, options: [.transitionFlipFromLeft, .showHideTransitionViews], completion: nil)
-            
         }
     }
     
