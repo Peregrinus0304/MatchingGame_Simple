@@ -105,8 +105,7 @@ fileprivate extension ViewController {
             }
             title = "flawless victory!"
             massage = ""
-        }
-        else {
+        } else {
             if milliseconds > 0 {
                 return
             }
@@ -152,12 +151,11 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         
         let card = cardArray[indexPath.row]
         
-        if card.isFlipped == false && card.isMatched == false {
-            cell.flip()
+        if !card.isFlipped  && !card.isMatched {
+            cell.flip(card)
             
             #warning("flip sound")
             
-            card.isFlipped = true
             
             if firstFlippedCardIndex == nil {
                 firstFlippedCardIndex = indexPath

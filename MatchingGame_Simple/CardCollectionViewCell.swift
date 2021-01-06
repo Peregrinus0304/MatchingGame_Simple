@@ -15,11 +15,10 @@ class CardCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var frontImageView: UIImageView!
     @IBOutlet weak var backImageView: UIImageView!
     
-    var card:Card?
     
     func setCard(_ card:Card) {
         
-        self.card = card
+        
         
         if card.isMatched == true{
             backImageView.alpha = 0
@@ -42,7 +41,8 @@ class CardCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func flip() {
+    func flip(_ card:Card) {
+        card.isFlipped = true
         UIView.transition(from: backImageView, to: frontImageView, duration: 0.3, options: [.transitionFlipFromLeft, .showHideTransitionViews], completion: nil)
     }
     
