@@ -16,6 +16,13 @@
 		457089AF259A31BA00963AB6 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457089AE259A31BA00963AB6 /* Card.swift */; };
 		457089B1259A38F800963AB6 /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457089B0259A38F800963AB6 /* CardModel.swift */; };
 		457089B3259A484900963AB6 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457089B2259A484900963AB6 /* CardCollectionViewCell.swift */; };
+		45D0D18825B32A20006B163D /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D0D18725B32A20006B163D /* SoundManager.swift */; };
+		45D0D19025B33331006B163D /* nomatchsound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 45D0D18A25B33330006B163D /* nomatchsound.wav */; };
+		45D0D19125B33331006B163D /* flipsound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 45D0D18B25B33330006B163D /* flipsound.wav */; };
+		45D0D19225B33331006B163D /* matchsound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 45D0D18C25B33330006B163D /* matchsound.wav */; };
+		45D0D19325B33331006B163D /* startsound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 45D0D18D25B33330006B163D /* startsound.wav */; };
+		45D0D19425B33331006B163D /* winsound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 45D0D18E25B33331006B163D /* winsound.wav */; };
+		45D0D19525B33331006B163D /* losesound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 45D0D18F25B33331006B163D /* losesound.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +37,13 @@
 		457089AE259A31BA00963AB6 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		457089B0259A38F800963AB6 /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
 		457089B2259A484900963AB6 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
+		45D0D18725B32A20006B163D /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		45D0D18A25B33330006B163D /* nomatchsound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = nomatchsound.wav; sourceTree = "<group>"; };
+		45D0D18B25B33330006B163D /* flipsound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = flipsound.wav; sourceTree = "<group>"; };
+		45D0D18C25B33330006B163D /* matchsound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = matchsound.wav; sourceTree = "<group>"; };
+		45D0D18D25B33330006B163D /* startsound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = startsound.wav; sourceTree = "<group>"; };
+		45D0D18E25B33331006B163D /* winsound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = winsound.wav; sourceTree = "<group>"; };
+		45D0D18F25B33331006B163D /* losesound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = losesound.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +78,9 @@
 			children = (
 				4570899A2598CF8B00963AB6 /* AppDelegate.swift */,
 				4570899C2598CF8B00963AB6 /* SceneDelegate.swift */,
+				45D0D18925B32F25006B163D /* Sounds */,
 				4570899E2598CF8B00963AB6 /* ViewController.swift */,
+				45D0D18725B32A20006B163D /* SoundManager.swift */,
 				457089B2259A484900963AB6 /* CardCollectionViewCell.swift */,
 				457089B0259A38F800963AB6 /* CardModel.swift */,
 				457089AE259A31BA00963AB6 /* Card.swift */,
@@ -74,6 +90,19 @@
 				457089A82598CF8E00963AB6 /* Info.plist */,
 			);
 			path = MatchingGame_Simple;
+			sourceTree = "<group>";
+		};
+		45D0D18925B32F25006B163D /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				45D0D18B25B33330006B163D /* flipsound.wav */,
+				45D0D18F25B33331006B163D /* losesound.wav */,
+				45D0D18C25B33330006B163D /* matchsound.wav */,
+				45D0D18A25B33330006B163D /* nomatchsound.wav */,
+				45D0D18D25B33330006B163D /* startsound.wav */,
+				45D0D18E25B33331006B163D /* winsound.wav */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,9 +163,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45D0D19225B33331006B163D /* matchsound.wav in Resources */,
 				457089A72598CF8E00963AB6 /* LaunchScreen.storyboard in Resources */,
 				457089A42598CF8D00963AB6 /* Assets.xcassets in Resources */,
 				457089A22598CF8B00963AB6 /* Main.storyboard in Resources */,
+				45D0D19025B33331006B163D /* nomatchsound.wav in Resources */,
+				45D0D19325B33331006B163D /* startsound.wav in Resources */,
+				45D0D19125B33331006B163D /* flipsound.wav in Resources */,
+				45D0D19425B33331006B163D /* winsound.wav in Resources */,
+				45D0D19525B33331006B163D /* losesound.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,6 +187,7 @@
 				4570899D2598CF8B00963AB6 /* SceneDelegate.swift in Sources */,
 				457089AF259A31BA00963AB6 /* Card.swift in Sources */,
 				457089B3259A484900963AB6 /* CardCollectionViewCell.swift in Sources */,
+				45D0D18825B32A20006B163D /* SoundManager.swift in Sources */,
 				457089B1259A38F800963AB6 /* CardModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

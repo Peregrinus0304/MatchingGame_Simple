@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     private var model = CardModel()
     private var cardArray = [Card]()
     private var timer:Timer?
-    private var milliseconds:Float = 60 * 1000
+    private var milliseconds:Float = 40 * 1000
     private var firstFlippedCardIndex:IndexPath?
     let sectionInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     
@@ -36,12 +36,18 @@ class ViewController: UIViewController {
         RunLoop.main.add(timer!, forMode:  .common)
     }
     
+  
+    override func viewDidAppear(_ animated: Bool) {
+        SoundManager.playSound(.start)
+    }
+    
 }
 
 //MARK: Fileprivate extension
 
 fileprivate extension ViewController {
     
+    // timer
     @objc func TimerElapsed() {
         milliseconds -= 1
         let seconds = String(format: "%.2f", milliseconds/1000)
@@ -53,6 +59,7 @@ fileprivate extension ViewController {
         }
     }
     
+    // check if two selected cards match
     func checkForMathces (_ secondFlippedCardIndex:IndexPath) {
         
         let cardOneCell = collectionView.cellForItem(at: firstFlippedCardIndex!) as? CardCollectionViewCell
@@ -63,6 +70,8 @@ fileprivate extension ViewController {
         
         if cardOne.imageName == cardTwo.imageName {
             
+            SoundManager.playSound(.match)
+            
             cardOne.isMatched = true
             cardTwo.isMatched = true
             
@@ -72,7 +81,8 @@ fileprivate extension ViewController {
             CheckGameEnded()
         }
         else {
-            #warning("nomatch sound")
+            
+            SoundManager.playSound(.nomatch)
             
             cardOne.isFlipped = false
             cardTwo.isFlipped = false
@@ -87,6 +97,7 @@ fileprivate extension ViewController {
         firstFlippedCardIndex = nil
     }
     
+    // check if player won or lost
     func CheckGameEnded() {
         var isWon = true
         var title = ""
@@ -105,12 +116,14 @@ fileprivate extension ViewController {
             }
             title = "flawless victory!"
             massage = ""
+            SoundManager.playSound(.win)
         } else {
             if milliseconds > 0 {
                 return
             }
             title = "You lose!"
             massage = ""
+            SoundManager.playSound(.lose)
         }
         showAlert(title, massage)
     }
@@ -154,8 +167,8 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         if !card.isFlipped  && !card.isMatched {
             cell.flip(card)
             
-            #warning("flip sound")
             
+            SoundManager.playSound(.flip)
             
             if firstFlippedCardIndex == nil {
                 firstFlippedCardIndex = indexPath
@@ -169,6 +182,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
 }
 
+// create adaptable layout
 extension ViewController: UICollectionViewDelegateFlowLayout  {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
